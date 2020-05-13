@@ -14,6 +14,7 @@ def parse_args():
 
 
 def run_shell():
+    os.chdir(os.getcwd())
     while True:
         command = input("> ")
         if 'quit' == command or command == 'exit':
