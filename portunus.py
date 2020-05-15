@@ -58,6 +58,8 @@ def make_connection(ip, port, is_tcp, is_client):
     print(f'[+] binding socket to {ip}:{port}')
     try:
         s.bind((ip, port))
+        if is_client:
+            s.listen(5)
     except:
         print(
             f'[+] socket failed to bind to {ip}:{port}' if is_client else f'[+] server socket failed to bind to {port}')
