@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
+        "dgram",
+        "inet",
         "nargs",
-        "portunus"
+        "portunus",
+        "uname"
     ]
 }
