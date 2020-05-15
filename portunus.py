@@ -46,23 +46,25 @@ def run_shell():
             print("failure executing command")
 
 
-def host_connections(ip, port, tcp):
-    print('[+] creating socket')
+def make_connection(ip, port, is_tcp, is_client):
+    print('[+] creating socket' if is_client else '[+] creating server socket')
     try:
-        host = socket.socket(
-            socket.AF_INET, socket.SOCK_STREAM if tcp else socket.SOCK_DGRAM)
+        s = socket.socket(
+            socket.AF_INET, socket.SOCK_STREAM if is_tcp else socket.SOCK_DGRAM)
     except:
-        print('[+] socket failed to be created')
+        print('[+] socket failed to be created' if is_client else '[+] server socket failed to be created')
         return False
-    print('[+] socket successfully created')
+    print('[+] socket successfully created' if is_client else '[+] print server socket successfully created')
     print(f'[+] binding socket to {ip}:{port}')
     try:
-        host.bind((ip, port))
+        s.bind((ip, port))
     except:
-        print(f'[+] socket failed to bind to {ip}:{port}')
+        print(
+            f'[+] socket failed to bind to {ip}:{port}' if is_client else f'[+] server socket failed to bind to {port}')
         return False
-    print(f'[+] socket successfully bound to {ip}:{port}')
-    return(host)
+    print(
+        f'[+] socket successfully bound to {ip}:{port}' if is_client else f'[+] server socket bound to {port}')
+    return(s)
 
 
 def main():
