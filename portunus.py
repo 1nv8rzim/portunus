@@ -57,8 +57,8 @@ def make_connection(ip, port, is_tcp, is_client):
     print('[+] socket successfully created' if is_client else '[+] print server socket successfully created')
     print(f'[+] binding socket to {ip}:{port}')
     try:
-        s.bind((ip, port))
-        if is_client:
+        s.connect((ip, port)) if is_client else s.bind((ip, port))
+        if not is_client:
             s.listen(5)
     except:
         print(
