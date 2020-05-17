@@ -19,7 +19,7 @@ def parse_args():
     port_randomization.add_argument(
         '-r', '--range', help='defines range of ports to randomize connection over', nargs=2)
     port_randomization.add_argument(
-        '-s', '--seed', help='defines seed for port randomization to use')
+        '--seed', help='defines seed for port randomization to use')
     connection = parser.add_mutually_exclusive_group()
     connection.add_argument(
         "-u", "--udp", help="utilizes udp for shell interation")
@@ -67,6 +67,25 @@ def make_connection(ip, port, is_tcp, is_client):
     print(
         f'[+] socket successfully bound to {ip}:{port}' if is_client else f'[+] server socket bound to {port}')
     return(s)
+
+
+def client_communication(sock):
+    while True:
+        command = input(getpass.getuser() + '@' + os.uname()
+                        [1].split('.')[0] + ' ' + os.getcwd().split('/')[-1] + "> ")
+        if 'quit' == command or command == 'exit':
+            break
+        try:
+            sock.send(command.encode())
+            recv_string = ""
+            while True:
+                recv = sock.recv(1024)
+                if not recv:
+                    break
+                recv_string += recv
+            print(recv_string)
+        except:
+            print("[+] Connection failed")
 
 
 def main():
