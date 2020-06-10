@@ -3,6 +3,7 @@
         "dgram",
         "inet",
         "nargs",
+        "paramiko",
         "popen",
         "portunus",
         "uname"
