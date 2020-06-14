@@ -11,7 +11,7 @@ language:   python 3.8
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    """ß
+    """
     randomization key
     ---
     port-range
