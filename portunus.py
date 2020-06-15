@@ -10,6 +10,9 @@ language:   python 3.8
 
 
 def parse_args():
+    """
+    Parses command line arguments
+    """
     parser = argparse.ArgumentParser()
     """
     randomization key
@@ -20,7 +23,8 @@ def parse_args():
     ---
     more to come...
     """
-    auth = parser.add_mutually_exclusive_group()
+    auth = parser.add_mutually_exclusive_group(
+        description="creates a backdoor to install on a system to gain persistence")
     auth.add_argument('-k', '--key', nargs=1, type=str,
                       help='enable ssh-key authentication')
     user_pass = auth.add_group()
@@ -32,3 +36,10 @@ def parse_args():
                       help='ssh authentication will use nothing')
 
     return parser.parse_args()
+
+
+def main():
+    """
+    Runs main loop
+    """
+    parser = parse_args()
