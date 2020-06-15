@@ -14,13 +14,6 @@ def parse_args():
     Parses command line arguments
     """
     parser = argparse.ArgumentParser()
-    """
-    time interval
-    ---
-    replication name
-    ---
-    more to come...
-    """
     auth = parser.add_mutually_exclusive_group(
         description="creates a backdoor to install on a system to gain persistence")
     auth.add_argument('-k', '--key', nargs=1, type=str,
