@@ -9,7 +9,7 @@ language:   python 3.8
 """
 
 
-def parse_args():
+def parse_args() -> ArgumentParser:
     """
     Parses command line arguments
     """
