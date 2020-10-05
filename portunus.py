@@ -19,3 +19,9 @@ class reverse_shell:
         parser = argparse.ArgumentParser()
 
         return parser.parse_args()
+
+    def host(self):
+        pass
+
+    def client(self):
+        pass
