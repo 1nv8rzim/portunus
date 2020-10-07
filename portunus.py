@@ -17,11 +17,13 @@ class reverse_shell:
             argparse.Namespace: parsed command line arguments
         """
         parser = argparse.ArgumentParser()
-
+        parser.add_argument(
+            'lhost', type=str, help='IP that the reverse shell will reach back out to')
+        parser.add_argument('-listener', help='Determines if the ')
         return parser.parse_args()
 
     def host(self):
         pass
 
-    def client(self):
+    def listener(self):
         pass
