@@ -19,7 +19,8 @@ class reverse_shell:
         parser = argparse.ArgumentParser()
         parser.add_argument(
             'lhost', type=str, help='IP that the reverse shell will reach back out to')
-        parser.add_argument('-listener', help='Determines if the ')
+        parser.add_argument(
+            '-listener', help='Determines what side of the host/listener relationship current programming is running')
         return parser.parse_args()
 
     def host(self):
