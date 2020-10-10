@@ -19,11 +19,15 @@ class reverse_shell:
         parser = argparse.ArgumentParser()
         parser.add_argument(
             'lhost', type=str, help='IP that the reverse shell will reach back out to')
+        parser.add_argument('lport', type=int,
+                            help='port that listener is listening on')
         parser.add_argument(
             '-listener', help='Determines what side of the host/listener relationship current programming is running')
         return parser.parse_args()
 
     def host(self):
+        """Runs main loop for host, beacons back to listener
+        """
         pass
 
     def listener(self):
