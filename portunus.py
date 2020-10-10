@@ -31,4 +31,6 @@ class reverse_shell:
         pass
 
     def listener(self):
+        """Runs main loop for listener, listens for beacons from host
+        """
         pass
