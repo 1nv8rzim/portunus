@@ -21,6 +21,7 @@ class reverse_shell:
             'lhost', type=str, help='IP that the reverse shell will reach back out to')
         parser.add_argument('lport', type=int,
                             help='port that listener is listening on')
+        parser.add_argument('-v', '--verbose', action='store_true')
         parser.add_argument(
             '-listener', help='Determines what side of the host/listener relationship current programming is running')
         return parser.parse_args()
