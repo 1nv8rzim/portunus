@@ -9,6 +9,7 @@ class reverse_shell:
         """Runs main loop of reverse_shell
         """
         self.parser = self.parse_args()
+        self.main()
 
     def parse_args(self):
         """Parses command line arguments into usable parameters
@@ -35,3 +36,11 @@ class reverse_shell:
         """Runs main loop for listener, listens for beacons from host
         """
         pass
+
+    def main(self):
+        """Runs main loop for reverse_shell
+        """
+        if parser.listener:
+            self.listener()
+        else:
+            self.host()

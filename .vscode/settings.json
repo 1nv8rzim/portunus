@@ -2,6 +2,8 @@
     "cSpell.words": [
         "dgram",
         "inet",
+        "lhost",
+        "lport",
         "nargs",
         "paramiko",
         "popen",
