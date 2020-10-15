@@ -23,6 +23,8 @@ class reverse_shell:
         parser.add_argument('lport', type=int,
                             help='port that listener is listening on')
         parser.add_argument('-v', '--verbose', action='store_true')
+        parser.add_argument('-u', '--udp', action='store_true',
+                            help='sets communication protocol to udp')
         parser.add_argument(
             '-listener', help='Determines what side of the host/listener relationship current programming is running')
         return parser.parse_args()
