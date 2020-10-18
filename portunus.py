@@ -46,3 +46,6 @@ class reverse_shell:
             self.listener()
         else:
             self.host()
+
+if __name__ == '__main__':
+    reverse_shell()
