@@ -48,6 +48,7 @@ class reverse_shell:
         self.verbose('[+] Server socket bound to port', self.parser.lport)
         c, addr = self.socket.accept()
         self.verbose('[+] Accepted incoming connection from', addr)
+        # send to function to run conversational loop
 
     def main(self):
         """Runs main loop for reverse_shell
