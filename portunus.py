@@ -43,9 +43,11 @@ class reverse_shell:
         """Runs main loop for listener, listens for beacons from host
         """
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.verbose('[+] Created server socket')
         self.socket.bind(('', self.parser.lport))
-        while True:
-            c, addr = self.socket.accept()
+        self.verbose('[+] Server socket bound to port', self.parser.lport)
+        c, addr = self.socket.accept()
+        self.verbose('[+] Accepted incoming connection from', addr)
 
     def main(self):
         """Runs main loop for reverse_shell
