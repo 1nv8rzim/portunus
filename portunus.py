@@ -12,6 +12,10 @@ class reverse_shell:
         self.parser = self.parse_args()
         self.main()
 
+    def verbose(self, *args):
+        if self.parser.verbose:
+            print(*args)
+
     def parse_args(self):
         """Parses command line arguments into usable parameters
 
