@@ -9,8 +9,14 @@ class reverse_shell:
     def __init__(self):
         """Runs main loop of reverse_shell
         """
-        self.parser = self.parse_args()
+        if __name__ == '__main__':
+            self.parser = self.parse_args()
+        else:
+            self.setup()
         self.main()
+
+    def setup(self):
+        pass
 
     def verbose(self, *args):
         if self.parser.verbose:
