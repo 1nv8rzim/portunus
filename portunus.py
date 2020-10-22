@@ -55,6 +55,12 @@ class reverse_shell:
         self.verbose('[+] Accepted incoming connection from', addr)
         # send to function to run conversational loop
 
+    def listener_loop(self):
+        pass
+
+    def host_loop(self):
+        pass
+
     def main(self):
         """Runs main loop for reverse_shell
         """
