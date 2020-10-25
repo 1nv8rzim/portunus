@@ -38,13 +38,14 @@ class reverse_shell:
                             help='sets communication protocol to udp')
         parser.add_argument(
             '-l', '--listener', help='Determines what side of the host/listener relationship current programming is running')
-        encryption = parser.add_argument_group()
-        encryption.add_argument(
+        encoding = parser.add_argument_group()
+        encoding.add_argument(
             '--base64', help='encodes connection in base64', action='store_true')
-        encryption.add_argument(
+        encoding.add_argument(
             '--caesar', help='encodes connection with caesar sipher', type=int)
-        encryption.add_argument(
+        encoding.add_argument(
             '--hex', help='encodes connection in hex', action='store_true')
+
         return parser.parse_args()
 
     def host(self):
