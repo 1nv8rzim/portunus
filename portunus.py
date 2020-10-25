@@ -48,6 +48,24 @@ class reverse_shell:
         # Encryption to add: AES, Blowfish, DES, Triple DES, RC2
         return parser.parse_args()
 
+    def encoding(self, message):
+        if self.parser.caesar:
+            pass
+        if self.parser.base64:
+            pass
+        if self.parser.hex:
+            pass
+        return message
+
+    def decoding(self, message):
+        if self.parser.hex:
+            pass
+        if self.parser.base64:
+            pass
+        if self.parser.caesar:
+            pass
+        return message
+
     def host(self):
         """Runs main loop for host, beacons back to listener
         """
