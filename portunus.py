@@ -45,7 +45,7 @@ class reverse_shell:
             '--caesar', help='encodes connection with caesar sipher', type=int)
         encoding.add_argument(
             '--hex', help='encodes connection in hex', action='store_true')
-
+        # Encryption to add: AES, Blowfish, DES, Triple DES, RC2
         return parser.parse_args()
 
     def host(self):
