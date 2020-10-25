@@ -50,7 +50,7 @@ class reverse_shell:
             f'[+] Socket connected to {self.parser.lhost}:{self.parser.lport}')
         self.host_loop()
 
-    def attacker(self):
+    def listener(self):
         """Runs main loop for listener, listens for beacons from host
         """
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -61,7 +61,7 @@ class reverse_shell:
         self.verbose('[+] Accepted incoming connection from', addr)
         self.listener_loop()
 
-    def attacker_loop(self):
+    def listener_loop(self):
         pass
 
     def host_loop(self):
@@ -71,7 +71,7 @@ class reverse_shell:
         """Runs main loop for reverse_shell
         """
         if parser.listener:
-            self.attacker()
+            self.listener()
         else:
             self.host()
 
