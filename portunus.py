@@ -49,6 +49,14 @@ class reverse_shell:
         return parser.parse_args()
 
     def encoding(self, message):
+        """[summary]
+
+        Args:
+            message ([type]): [description]
+
+        Returns:
+            [type]: [description]
+        """
         if self.parser.caesar:
             pass
         if self.parser.base64:
@@ -58,6 +66,14 @@ class reverse_shell:
         return message
 
     def decoding(self, message):
+        """[summary]
+
+        Args:
+            message ([type]): [description]
+
+        Returns:
+            [type]: [description]
+        """
         if self.parser.hex:
             pass
         if self.parser.base64:
