@@ -49,13 +49,13 @@ class reverse_shell:
         return parser.parse_args()
 
     def encoding(self, message):
-        """[summary]
+        """Encodes outgoing message
 
         Args:
-            message ([type]): [description]
+            message (str): message to be encoded
 
         Returns:
-            [type]: [description]
+            str: encoded message
         """
         if self.parser.caesar:
             pass
@@ -66,13 +66,13 @@ class reverse_shell:
         return message
 
     def decoding(self, message):
-        """[summary]
+        """Decodes oncoming message
 
         Args:
-            message ([type]): [description]
+            message (str): messaged to be decoded
 
         Returns:
-            [type]: [description]
+            str: decoded message
         """
         if self.parser.hex:
             pass
