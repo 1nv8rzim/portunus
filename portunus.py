@@ -104,6 +104,8 @@ class reverse_shell:
         self.listener_loop()
 
     def listener_loop(self):
+        """
+        """
         pass
 
     def host_loop(self):
