@@ -109,6 +109,8 @@ class reverse_shell:
         pass
 
     def host_loop(self):
+        """
+        """
         pass
 
     def main(self):
