@@ -104,12 +104,12 @@ class reverse_shell:
         self.listener_loop()
 
     def listener_loop(self):
-        """Runs loop for listener
+        """Runs loop for listener to communicate with host
         """
         pass
 
     def host_loop(self):
-        """Runs loop for host
+        """Runs loop for host to communicate with listener
         """
         pass
 
